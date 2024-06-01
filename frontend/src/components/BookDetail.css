@@ -1,0 +1,73 @@
+/* BookDetail.css */
+.book-detail-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.book-author {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #555555;
+}
+
+.book-description {
+    margin-bottom: 20px;
+    color: #666666;
+}
+
+.reviews-container {
+    margin-top: 20px;
+}
+
+.review-item {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.review-rating {
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.review-comment {
+    color: #444444;
+}
+
+.submit-review-container {
+    margin-top: 20px;
+}
+
+.submit-review-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.submit-review-button {
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-review-button:hover {
+    background-color: #ff4f4f;
+}
+
+.error {
+    color: #ff4f4f;
+}

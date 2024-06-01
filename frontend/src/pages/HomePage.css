@@ -1,0 +1,53 @@
+/* HomePage.css */
+.home-page-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.app-title {
+    font-family: 'Montserrat', sans-serif;
+    /* Use a Google Font for a modern look */
+    font-size: 2.5em;
+    /* Adjusted font size for better readability */
+    font-weight: bold;
+    /* Ensure the title is bold for emphasis */
+    color: #333;
+    /* Dark color for good contrast */
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Add a subtle text shadow for depth */
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    /* Center the search bar horizontally */
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 80%;
+    /* Adjusted width for better visibility */
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    background-color: #f2f4f8;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar::placeholder {
+    color: #aaaaaa;
+}

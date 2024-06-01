@@ -1,0 +1,27 @@
+.book-list {
+    margin-top: 20px;
+}
+
+.book-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.book-item:hover {
+    background-color: #f5f5f5;
+}
+
+.book-title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.book-author {
+    font-style: italic;
+}
+
+.book-genre {
+    font-weight: bold;
+}

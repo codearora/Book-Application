@@ -1,5 +1,7 @@
+// BookDetail.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './BookDetail.css';
 
 const BookDetail = ({ match }) => {
     const [book, setBook] = useState(null);
@@ -46,22 +48,22 @@ const BookDetail = ({ match }) => {
     if (!book) return <div>Loading...</div>;
 
     return (
-        <div>
-            <h1>{book.title}</h1>
-            <h2>{book.author}</h2>
-            <p>{book.description}</p>
-            <div>
+        <div className="book-detail-container">
+            <h1 className="book-title">{book.title}</h1>
+            <h2 className="book-author">{book.author}</h2>
+            <p className="book-description">{book.description}</p>
+            <div className="reviews-container">
                 <h3>Reviews</h3>
                 {reviews.map(review => (
-                    <div key={review.id}>
-                        <p>Rating: {review.rating}</p>
-                        <p>{review.comment}</p>
+                    <div key={review.id} className="review-item">
+                        <p className="review-rating">Rating: {review.rating}</p>
+                        <p className="review-comment">{review.comment}</p>
                     </div>
                 ))}
-                <div>
+                <div className="submit-review-container">
                     <h3>Submit a Review</h3>
                     <div>
-                        <label>Rating:</label>
+                        <label className="submit-review-label">Rating:</label>
                         <input
                             type="number"
                             value={rating}
@@ -72,14 +74,14 @@ const BookDetail = ({ match }) => {
                         {formErrors.rating && <div className="error">{formErrors.rating}</div>}
                     </div>
                     <div>
-                        <label>Comment:</label>
+                        <label className="submit-review-label">Comment:</label>
                         <textarea
                             value={comment}
                             onChange={e => setComment(e.target.value)}
                         ></textarea>
                         {formErrors.comment && <div className="error">{formErrors.comment}</div>}
                     </div>
-                    <button onClick={submitReview}>Submit</button>
+                    <button className="submit-review-button" onClick={submitReview}>Submit</button>
                 </div>
             </div>
         </div>

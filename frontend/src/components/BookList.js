@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './BookList.css';
 
 const BookList = ({ books }) => {
     return (
-        <div>
+        <div className="book-list">
             {books.map(book => (
-                <div key={book.id}>
+                <div key={book.id} className="book-item">
                     <Link to={`/books/${book.id}`}>
-                        <h2>{book.title}</h2>
-                        <p>{book.author}</p>
-                        <p>{book.genre}</p>
+                        <h2 className="book-title">{book.title}</h2>
+                        <p className="book-author">{book.author}</p>
+                        <p className="book-genre">{book.genre}</p>
                     </Link>
                 </div>
             ))}
