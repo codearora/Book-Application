@@ -1,0 +1,25 @@
+book-review-app/
+├── backend/
+│   ├── db/
+│   │   └── sqlite.js
+│   ├── migrations/
+│   │   └── init.sql
+│   ├── routes/
+│   │   ├── books.js
+│   │   └── reviews.js
+│   ├── app.js
+│   └── package.json
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── BookList.js
+│   │   │   └── BookDetail.js
+│   │   ├── pages/
+│   │   │   ├── Home.js
+│   │   │   └── BookPage.js
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── .env
+│   └── package.json
+├── README.md
