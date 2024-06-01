@@ -10,44 +10,89 @@
 
 .app-title {
     font-family: 'Montserrat', sans-serif;
-    /* Use a Google Font for a modern look */
     font-size: 2.5em;
-    /* Adjusted font size for better readability */
     font-weight: bold;
-    /* Ensure the title is bold for emphasis */
     color: #333;
-    /* Dark color for good contrast */
     text-align: center;
     margin-bottom: 30px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    /* Add a subtle text shadow for depth */
 }
 
 .search-bar-container {
     display: flex;
     justify-content: center;
-    /* Center the search bar horizontally */
     margin-bottom: 20px;
 }
 
 .search-bar {
     width: 80%;
-    /* Adjusted width for better visibility */
     padding: 15px;
     border: none;
     border-radius: 25px;
     font-size: 1.2em;
-    background-color: #f2f4f8;
+    background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    color: #333;
+    /* Text color */
 }
 
 .search-bar:focus {
-    outline: none;
-    background-color: #ffffff;
+    background-color: #f2f4f8;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
 
 .search-bar::placeholder {
     color: #aaaaaa;
+}
+
+.book-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .book-list-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+.book-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.book-item:hover {
+    transform: translateY(-5px);
+    background-color: #f2f2f2;
+    /* Light gray background on hover */
+}
+
+.book-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 1em;
+    font-style: italic;
+    color: #555;
+}
+
+.book-genre {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.book-description {
+    font-size: 0.9em;
+    color: #666;
 }
