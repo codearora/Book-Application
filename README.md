@@ -82,6 +82,7 @@ This command will add a new book titled "The Hobbit" to the database via the bac
 ## Contributors
 
 - Jai Arora (jaiarora75977@gmail.com)
+- LinkedIn-https://www.linkedin.com/in/jaiarora6377
 
 ## License
 
