@@ -6,6 +6,7 @@ const BookDetail = ({ match }) => {
     const [reviews, setReviews] = useState([]);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
+    const [formErrors, setFormErrors] = useState({});
 
     useEffect(() => {
         const bookId = match.params.id;
@@ -17,12 +18,28 @@ const BookDetail = ({ match }) => {
         });
     }, [match.params.id]);
 
+    const validateForm = () => {
+        const errors = {};
+        if (rating === 0) {
+            errors.rating = 'Please select a rating.';
+        }
+        if (!comment.trim()) {
+            errors.comment = 'Please enter a comment.';
+        }
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
     const submitReview = () => {
+        if (!validateForm()) {
+            return; // Don't submit if form is invalid
+        }
         const bookId = match.params.id;
         axios.post('http://localhost:3001/api/reviews', { bookId, rating, comment }).then(response => {
             setReviews([...reviews, { id: response.data.id, rating, comment }]);
             setRating(0);
             setComment('');
+            setFormErrors({});
         });
     };
 
@@ -43,17 +60,25 @@ const BookDetail = ({ match }) => {
                 ))}
                 <div>
                     <h3>Submit a Review</h3>
-                    <input
-                        type="number"
-                        value={rating}
-                        onChange={e => setRating(e.target.value)}
-                        min="1"
-                        max="5"
-                    />
-                    <textarea
-                        value={comment}
-                        onChange={e => setComment(e.target.value)}
-                    ></textarea>
+                    <div>
+                        <label>Rating:</label>
+                        <input
+                            type="number"
+                            value={rating}
+                            onChange={e => setRating(e.target.value)}
+                            min="1"
+                            max="5"
+                        />
+                        {formErrors.rating && <div className="error">{formErrors.rating}</div>}
+                    </div>
+                    <div>
+                        <label>Comment:</label>
+                        <textarea
+                            value={comment}
+                            onChange={e => setComment(e.target.value)}
+                        ></textarea>
+                        {formErrors.comment && <div className="error">{formErrors.comment}</div>}
+                    </div>
                     <button onClick={submitReview}>Submit</button>
                 </div>
             </div>
