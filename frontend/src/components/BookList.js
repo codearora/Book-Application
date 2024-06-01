@@ -9,6 +9,7 @@ const BookList = ({ books }) => {
                     <Link to={`/books/${book.id}`}>
                         <h2>{book.title}</h2>
                         <p>{book.author}</p>
+                        <p>{book.genre}</p>
                     </Link>
                 </div>
             ))}
