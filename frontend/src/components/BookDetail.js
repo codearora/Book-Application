@@ -8,6 +8,7 @@ const BookDetail = ({ match }) => {
     const [rating, setRating] = useState(1); // Set initial rating to 1
     const [comment, setComment] = useState('');
     const [formErrors, setFormErrors] = useState({});
+    const [averageRating, setAverageRating] = useState(0);
 
     useEffect(() => {
         const bookId = match.params.id;
@@ -15,9 +16,21 @@ const BookDetail = ({ match }) => {
             setBook(response.data);
         });
         axios.get(`http://localhost:3001/api/reviews?bookId=${bookId}`).then(response => {
-            setReviews(response.data);
+            const reviewsData = response.data;
+            setReviews(reviewsData);
+            calculateAverageRating(reviewsData);
         });
     }, [match.params.id]);
+
+    const calculateAverageRating = (reviews) => {
+        if (reviews.length === 0) {
+            setAverageRating(0);
+            return;
+        }
+        const sum = reviews.reduce((total, review) => total + review.rating, 0);
+        const average = sum / reviews.length;
+        setAverageRating(average.toFixed(1));
+    };
 
     const validateForm = () => {
         const errors = {};
@@ -37,7 +50,10 @@ const BookDetail = ({ match }) => {
         }
         const bookId = match.params.id;
         axios.post('http://localhost:3001/api/reviews', { bookId, rating, comment }).then(response => {
-            setReviews([...reviews, { id: response.data.id, rating, comment }]);
+            const newReview = { id: response.data.id, rating, comment };
+            const updatedReviews = [...reviews, newReview];
+            setReviews(updatedReviews);
+            calculateAverageRating(updatedReviews);
             setRating(1); // Reset rating to 1
             setComment('');
             setFormErrors({});
@@ -51,6 +67,7 @@ const BookDetail = ({ match }) => {
             <h1 className="book-title">{book.title}</h1>
             <h2 className="book-author">{book.author}</h2>
             <p className="book-description">{book.description}</p>
+            <p className="average-rating">Average Rating: {averageRating}</p>
             <div className="reviews-container">
                 <h3>Reviews</h3>
                 {reviews.map(review => (
