@@ -1,4 +1,3 @@
-// BookDetail.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './BookDetail.css';
@@ -6,7 +5,7 @@ import './BookDetail.css';
 const BookDetail = ({ match }) => {
     const [book, setBook] = useState(null);
     const [reviews, setReviews] = useState([]);
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(1); // Set initial rating to 1
     const [comment, setComment] = useState('');
     const [formErrors, setFormErrors] = useState({});
 
@@ -22,8 +21,8 @@ const BookDetail = ({ match }) => {
 
     const validateForm = () => {
         const errors = {};
-        if (rating === 0) {
-            errors.rating = 'Please select a rating.';
+        if (rating < 1 || rating > 5) {
+            errors.rating = 'Rating must be between 1 and 5.';
         }
         if (!comment.trim()) {
             errors.comment = 'Please enter a comment.';
@@ -39,7 +38,7 @@ const BookDetail = ({ match }) => {
         const bookId = match.params.id;
         axios.post('http://localhost:3001/api/reviews', { bookId, rating, comment }).then(response => {
             setReviews([...reviews, { id: response.data.id, rating, comment }]);
-            setRating(0);
+            setRating(1); // Reset rating to 1
             setComment('');
             setFormErrors({});
         });
@@ -67,7 +66,10 @@ const BookDetail = ({ match }) => {
                         <input
                             type="number"
                             value={rating}
-                            onChange={e => setRating(e.target.value)}
+                            onChange={e => {
+                                const newRating = Math.max(1, Math.min(5, Number(e.target.value)));
+                                setRating(newRating);
+                            }}
                             min="1"
                             max="5"
                         />
